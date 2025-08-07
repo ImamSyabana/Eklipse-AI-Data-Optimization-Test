@@ -132,7 +132,7 @@ for index, row in df.iterrows():
     print(player_mode)
 
 # 5. Save the enhanced DataFrame to a new CSV file [cite: 46, 53]
-output_filename = "task 2/enhanced_games_data.csv"
+output_filename = "enhanced_games_data.csv"
 df.to_csv(output_filename, index=False)
 
 print(f"\nProcess complete. Enhanced data saved to '{output_filename}'.")
