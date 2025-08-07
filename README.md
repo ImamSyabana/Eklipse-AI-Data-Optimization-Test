@@ -21,5 +21,4 @@ Follow these steps to set up the project environment.
 First, clone this repository to your local machine.
 
 ```bash
-git clone <your-repository-url>
-cd <your-repository-directory>
+git clone https://github.com/ImamSyabana/Eklipse-AI-Data-Optimization-Test.git
