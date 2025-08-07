@@ -55,3 +55,13 @@ Now, install these libraries using pip:
 ```bash
 pip install -r requirements.txt
 ```
+
+### 4. Run the Script
+
+Once the environment is set up and configured, you can run the main script from your terminal:
+
+```bash
+python main.py
+```
+
+The script will process the input CSV file and generate a new file named enhanced_games_data.csv with the enriched data.
