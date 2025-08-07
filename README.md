@@ -22,7 +22,7 @@ First, clone this repository to your local machine.
 
 ```bash
 git clone https://github.com/ImamSyabana/Eklipse-AI-Data-Optimization-Test.git
-
+```
 
 ### 2. Create a conda virtual environment
 
@@ -33,3 +33,18 @@ conda create --name task_2 python=3.13.5
 
 # Activate the newly created environment
 conda activate task_2
+
+### 3. Install Required Libraries
+
+This project's dependencies are listed in the requirements.txt file. Create this file in your project directory with the following content: requirements.txt
+
+pandas
+numpy
+python-dotenv
+google-generativeai
+
+Now, install these libraries using pip:
+
+```bash
+pip install -r requirements.txt
+```
