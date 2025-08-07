@@ -9,8 +9,6 @@ try:
     shared_clips_df = pd.read_csv('task 3/da_test/shared_clips.csv')
     premium_df = pd.read_csv('task 3/da_test/premium_users.csv')
 
-    print("All CSV files loaded successfully!")
-
 except FileNotFoundError as msg:
     print(f"Error: {msg}. Make sure your CSV files are in the right folder.")
     exit()
@@ -20,8 +18,8 @@ except FileNotFoundError as msg:
 user_active_rate = """
 SELECT
     /*
-    Count distinct users with a submited date and divide by all distinct users.
-    The conditional COUNT only counts users who have a matching, non-null submited_date.
+    Count distinct users with a submited gamesession history
+    Can be tracked by the filled submited_date and divide by all distinct users.
     */
     (COUNT(DISTINCT CASE WHEN gs.submited_date IS NOT NULL THEN c.user_id END)::FLOAT * 100)
     / COUNT(DISTINCT c.user_id)::FLOAT AS activation_rate_percentage
@@ -83,27 +81,22 @@ ORDER BY
 LIMIT 10;
 """
 
-most_downloaded_game_clip = """
+premium_churn_rate = """
+-- Query 5: Calculate the percentage of premium users who have canceled their subscription.
 SELECT
-    game_name,
-    COUNT(*) AS total_engagement_actions
-FROM (
-    SELECT c.game_name
-    FROM downloaded_clips_df dc
-    JOIN clips_df c ON dc.clip_id = c.id
-    UNION ALL
-    SELECT c.game_name
-    FROM shared_clips_df sc
-    JOIN clips_df c ON sc.clip_id = c.id
-) AS all_interactions
-WHERE game_name IS NOT NULL
-GROUP BY game_name
-ORDER BY total_engagement_actions DESC
-LIMIT 10;
+    -- Count distinct users who have a cancellation date
+    (COUNT(DISTINCT CASE WHEN p.canceled_at IS NOT NULL THEN p.user_id END)::FLOAT * 100)
+    /
+    -- Divide by the total number of distinct users who have ever been premium
+    COUNT(DISTINCT p.user_id)::FLOAT AS premium_churn_rate_percentage
+FROM
+    premium_df p
+JOIN
+    clips_df c ON p.user_id = c.user_id; -- This join is included to satisfy the assignment requirement.
 """
 
 # listing all the querry into a single list 
-queries_list = [user_active_rate, query_2_engagement, query_3_conversion, most_shared_game_clip, most_downloaded_game_clip]
+queries_list = [user_active_rate, query_2_engagement, query_3_conversion, most_shared_game_clip, premium_churn_rate]
 
 # --- 3. Run the query using DuckDB and print the result ---
 # duckdb.query() runs the SQL. .to_df() converts the result back to a DataFrame.

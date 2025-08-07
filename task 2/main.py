@@ -6,7 +6,7 @@ from dotenv import find_dotenv, load_dotenv
 import sys
 import time
 
-# mencari lokasi file .env secara otomatis 
+# search  .env file location automaticaly 
 dotenv_path = find_dotenv()
 
 # load the entries as environtment variables
