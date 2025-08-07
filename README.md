@@ -22,3 +22,14 @@ First, clone this repository to your local machine.
 
 ```bash
 git clone https://github.com/ImamSyabana/Eklipse-AI-Data-Optimization-Test.git
+
+
+### 2. Create a conda virtual environment
+
+Copy this to anaconda prompt
+
+# Create the environment named 'task_2' with Python 3.13.5
+conda create --name task_2 python=3.13.5
+
+# Activate the newly created environment
+conda activate task_2
