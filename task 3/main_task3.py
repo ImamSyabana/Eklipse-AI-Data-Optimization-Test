@@ -1,7 +1,7 @@
 import pandas as pd
 import duckdb
 
-# --- 1. Load CSV files into pandas DataFrames ----
+# --- 1. Load CSV files into pandas DataFrames -----
 try:
     gamesession_df = pd.read_csv('task 3/da_test/gamesession.csv')
     clips_df = pd.read_csv('task 3/da_test/clips.csv')
